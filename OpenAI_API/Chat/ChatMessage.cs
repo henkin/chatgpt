@@ -2,10 +2,12 @@
 using OpenAI_API.ChatFunctions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace OpenAI_API.Chat
 {
+	[DebuggerDisplay("Role: {Role}, Content: {Content}")]
 	/// <summary>
 	/// Chat message sent or received from the API. Includes who is speaking in the "role" and the message text in the "content"
 	/// </summary>

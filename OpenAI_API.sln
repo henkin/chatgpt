@@ -11,7 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.md = LICENSE.md
 		README.md = README.md
+		Makefile = Makefile
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gptd.ChatLib", "..\..\gptd\Gptd.ChatLib\Gptd.ChatLib.csproj", "{F77E848E-8A7A-4231-BDE3-7662CDE8D6E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gptd.ChatLib.Tests", "..\..\gptd\Gptd.ChatLib.Tests\Gptd.ChatLib.Tests.csproj", "{0E45F77C-65F2-4D8E-9E90-66AAC0746F40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,11 +32,21 @@ Global
 		{066EC5A5-47CE-4B91-B924-F236644037C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066EC5A5-47CE-4B91-B924-F236644037C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066EC5A5-47CE-4B91-B924-F236644037C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77E848E-8A7A-4231-BDE3-7662CDE8D6E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77E848E-8A7A-4231-BDE3-7662CDE8D6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77E848E-8A7A-4231-BDE3-7662CDE8D6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77E848E-8A7A-4231-BDE3-7662CDE8D6E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E45F77C-65F2-4D8E-9E90-66AAC0746F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E45F77C-65F2-4D8E-9E90-66AAC0746F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E45F77C-65F2-4D8E-9E90-66AAC0746F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E45F77C-65F2-4D8E-9E90-66AAC0746F40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {971477B1-6BBA-40CD-8B76-AEBC01D99130}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

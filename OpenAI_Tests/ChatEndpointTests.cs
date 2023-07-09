@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
 using OpenAI_API.Models;
@@ -20,7 +20,7 @@ namespace OpenAI_Tests
 		[SetUp]
 		public void Setup()
 		{
-			OpenAI_API.APIAuthentication.Default = new OpenAI_API.APIAuthentication(Environment.GetEnvironmentVariable("TEST_OPENAI_SECRET_KEY"));
+			OpenAI_API.APIAuthentication.Default = new OpenAI_API.APIAuthentication(Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
 		}
 
 		[Test]
