@@ -4,9 +4,9 @@ namespace AiApp;
 
 public interface ICallableFunction
 {
-    public string Name { get; }
-    public string Description { get; }
-    public object Parameters { get; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public object Parameters { get; set; }
     Type ParamType { get; }
     Function GetFunction { get; }
     public Task<object> Call(object param);

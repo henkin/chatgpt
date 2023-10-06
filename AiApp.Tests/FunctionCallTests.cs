@@ -11,5 +11,6 @@ public class FunctionCallTests
     {
 	    var appModel = new BasicMultiFunctionChat();
 	    var content = await appModel.Ask("This has got to be a cool string!");
+	    content.Should().Contain("did it!");
     }
 }

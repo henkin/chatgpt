@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Reflection;
 
 namespace AiApp.Tests;
 
@@ -15,26 +16,39 @@ Otherwise, you should call do_uncool() with the string, and return to the user t
  *
  * Try to predict that if the directory contents looks like it could be created with some more advanced version of a code-generating command like 'dotnet new', make the command for that. 
  */
-    protected override List<ICallableFunction> FunctionDefinitions => new()
+    // protected override List<ICallableFunction> FunctionDefinitions => new()
+    // {
+    //     CreateFunction<IsCoolParams>(
+    //         "is_cool",
+    //         "Returns a string indicating whether the input string is cool or not cool. The input string is cool only if return value is positive (eg 'yes' or 'yup', etc)",
+    //         async paramsObject =>
+    //         {
+    //             var isCoolParams = paramsObject;
+    //             return "sure is cool!";
+    //         }), 
+    //         
+    //     CreateFunction<DoCoolParams>(
+    //         "do_cool_thing",
+    //         "Does the cool thing with the input string. Call only if the string is cool",
+    //         async doCoolParams =>
+    //         {
+    //             return "did it!";
+    //         }),
+    // };
+    
+    [CallableFunction("is_cool", "Returns a string indicating whether the input string is cool or not cool. The input string is cool only if return value is positive (eg 'yes' or 'yup', etc)")]
+    public async Task<string> IsCool(IsCoolParams isCoolParams)
     {
-        CreateFunction<IsCoolParams>(
-            "is_cool",
-            "Returns a string indicating whether the input string is cool or not cool. The input string is cool only if return value is positive (eg 'yes' or 'yup', etc)",
-            async paramsObject =>
-            {
-                var isCoolParams = paramsObject;
-                return "sure is cool!";
-            }), 
-            
-        CreateFunction<DoCoolParams>(
-            "do_cool_thing",
-            "Does the cool thing with the input string. Call only if the string is cool",
-            async doCoolParams =>
-            {
-                return "did it!";
-            }),
-    };
+        return "sure is cool!";
+    }
+    
+    [CallableFunction("do_cool_thing", "Does the cool thing with the input string. Call only if the string is cool")]
+    public async Task<string> DoCoolThing(DoCoolParams doCoolParams)
+    {
+        return "did it!";
+    }
 }
+
 
 public class IsCoolParams
 {
