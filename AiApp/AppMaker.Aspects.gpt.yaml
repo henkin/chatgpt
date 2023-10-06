@@ -1,0 +1,49 @@
+- problems
+- solutions and validations
+  - application architecture
+  - component interactions
+  - data definitions
+  - data stores
+  - operations
+  - interfaces
+  - user stories
+  - debt
+- aspects
+  - security
+  - a/b testing
+  - architecture and design patterns
+  - automated release pipelines
+  - automated testing
+  - behavior driven development (bdd)
+  - build 
+  - canary deployments and blue/green deployments
+  - chaos engineering and fault injection
+  - code quality
+  - coding conventions (defined and followed)
+  - configuration management
+  - continuous delivery (cd)
+  - coverage 
+  - dashboarding and monitoring
+  - data handling.
+  - dependency management and versioning
+  - deploy - containerization and orchestration (like docker, kubernetes)
+  - documentation 
+  - environment data movement and transofmration tools (eg, db migrations)
+  - feature toggles
+  - gitops workflow
+  - handle scalability (handled through the cd tooling)
+  - hosting
+  - immutable infrastructure
+  - infrastructure as code (terraform, cloudformation, etc.)
+  - migrations
+  - monitoring and logging (tools like prometheus, elk stack, etc.)
+  - networking
+  - observability practices (like distributed tracing, system health dashboards)
+  - proactive alerting and incident response
+  - refactoring
+  - security
+  - service level objectives (slos) and service level indicators (slis)
+  - site reliability engineering (sre) 
+  - tech debt
+  - test driven development (tdd)
+  - tests (unit, integration, acceptance, load)

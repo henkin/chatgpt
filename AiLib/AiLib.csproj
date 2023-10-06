@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>8.0</LangVersion>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>Paul Henkin</Authors>
+		<Product>OAI Lib</Product>
+		<Description>My private library to use with OpenAI's GPT-3 API, as well as ChatGPT, GPT-4, DALL·E, etc. An OpenAI or Azure OpenAI account is required.</Description>
+		<Copyright>This library is not licensed to be used in anything other that my code.</Copyright>
+<!--		<PackageLicenseExpression>CC0-1.0</PackageLicenseExpression>-->
+		<PackageProjectUrl>https://github.com/OkGoDoIt/OpenAI-API-dotnet</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/OkGoDoIt/OpenAI-API-dotnet</RepositoryUrl>
+		<PackageTags>OpenAI, AI, ML, API, ChatGPT, DALLE, GPT3, GPT-3, GPT4, GPT-4, DALL-E</PackageTags>
+		<Title>Ai Lib</Title>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageId>AiLib</PackageId>
+		<Version>1.7.2</Version>
+		<AssemblyVersion>1.0</AssemblyVersion>
+		<FileVersion>1.0</FileVersion>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<RepositoryType>git</RepositoryType>
+
+		<!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<Deterministic>true</Deterministic>
+
+		<AssemblyName>AiLib</AssemblyName>
+
+		<RootNamespace>AiLib</RootNamespace>
+
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageIcon>nuget_logo.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Functions\" />
+	  <None Remove="Moderation\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="nuget_logo.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="OpenAI_Tests" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="2.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Moderation\" />
+	</ItemGroup>
+</Project>
