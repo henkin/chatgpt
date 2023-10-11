@@ -190,17 +190,19 @@ public abstract class MultiFunctionCallChat
             var attribute = method.GetCustomAttribute<CallableFunctionAttribute>();
             if (attribute != null)
             {
+                // get the name of the function that the attribute is attached to
+                var functionName = method.Name;
                 var parameters = method.GetParameters();
                 if (parameters.Length != 1)
                 {
                     throw new Exception(
-                        $"CallableFunction {attribute.Name} has {parameters.Length} parameters, but should have exactly 1");
+                        $"CallableFunction {functionName} has {parameters.Length} parameters, but should have exactly 1");
                 }
 
                 var parameterType = parameters[0].ParameterType;
                 var functionType = typeof(CallableFunction<>).MakeGenericType(parameterType);
                 var function = Activator.CreateInstance(functionType) as ICallableFunction;
-                function.Name = attribute.Name;
+                function.Name = functionName;
                 function.Description = attribute.Description;
                 function.Parameters = SchemaLookup.GetSchemaForType(parameterType);
 
