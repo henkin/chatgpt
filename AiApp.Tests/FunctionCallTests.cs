@@ -1,4 +1,3 @@
-using AiApp;
 using AiApp.Tests;
 using FluentAssertions;
 
@@ -6,7 +5,9 @@ namespace Gptd.ChatLib.Tests;
 
 public class FunctionCallTests
 {
-    [Fact]
+	private readonly CodeFileParserTests _codeFileParserTests = new CodeFileParserTests();
+
+	[Fact]
     public async void BasicSingleFunctionTest()
     {
 	    var appModel = new BasicMultiFunctionChat();

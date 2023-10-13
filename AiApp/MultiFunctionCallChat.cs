@@ -28,7 +28,7 @@ public abstract class MultiFunctionCallChat
     /// Gets the list of function definitions.
     /// This property should be overridden in derived classes to provide specific function definitions.
     /// </summary>
-    protected virtual List<ICallableFunction> FunctionDefinitions => new();
+    protected virtual List<ICallableFunction> FunctionDefinitions { get; set; } = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseChat"/> class.
@@ -190,29 +190,27 @@ public abstract class MultiFunctionCallChat
             var attribute = method.GetCustomAttribute<CallableFunctionAttribute>();
             if (attribute != null)
             {
+                // get the name of the function that the attribute is attached to
+                var functionName = method.Name;
                 var parameters = method.GetParameters();
                 if (parameters.Length != 1)
                 {
                     throw new Exception(
-                        $"CallableFunction {attribute.Name} has {parameters.Length} parameters, but should have exactly 1");
+                        $"CallableFunction {functionName} has {parameters.Length} parameters, but should have exactly 1");
                 }
 
                 var parameterType = parameters[0].ParameterType;
                 var functionType = typeof(CallableFunction<>).MakeGenericType(parameterType);
                 var function = Activator.CreateInstance(functionType) as ICallableFunction;
-                function.Name = attribute.Name;
+                function.Name = functionName;
                 function.Description = attribute.Description;
                 function.Parameters = SchemaLookup.GetSchemaForType(parameterType);
 
                 // call CallableFunction through reflection to create the function with the FuncFallback
                 // property set to a lambda that calls the method on this class's method with the CallableFunctionAttribute.
-                var makeGenericType = typeof(Func<,>).MakeGenericType(parameterType, typeof(Task<object>));
+                var makeGenericType = typeof(Func<,>).MakeGenericType(parameterType, typeof(Task<string>));
                 var funcCallback = method.CreateDelegate(makeGenericType, this);
                 function.GetType().GetProperty("FuncCallback")!.SetValue(function, funcCallback);
-
-                // if the above fails, I should be able to do this:
-                var funcCallback2 = method.CreateDelegate(makeGenericType);
-                function.GetType().GetProperty("FuncCallback")!.SetValue(function, funcCallback2);
                 
                 // get the instance of CallableFunction<> and set the FuncCallback property to a lambda that calls the method
                 FunctionDefinitions.Add(function);
@@ -223,7 +221,7 @@ public abstract class MultiFunctionCallChat
     protected CallableFunction<TParams> CreateFunction<TParams>(
         string Name,
         string Description,
-        Func<TParams, Task<object>> FuncCallback,
+        Func<TParams, Task<string>> FuncCallback,
         bool IsTerminal = false)
     {
         return new CallableFunction<TParams>()
